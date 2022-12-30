@@ -87,9 +87,97 @@
     
     <script>
         //***edit this only for your information***
-        const player = "ALEJANDRO CORRALES";
-        const agency = "LOS SANTOS SHERIFF DEPARTMENT";
-        const callsign = "[8730]";
+       <!DOCTYPE html>
+<!-- goto line 81 and be sure to edit your information -->
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&effect=outline" rel="stylesheet" type="text/css"> 
+    
+        <style>
+            body { 
+                background-color: rgba(0, 0, 0, 0); 
+                margin: 0px auto; 
+                overflow: hidden; 
+                font-family: 'Share Tech Mono', monospace;
+                font-size: 13px;
+                color: #AFAFAF;
+            }
+
+            .Blink {
+                animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;  
+            }
+
+            @keyframes blinker {  
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+
+            .top-right{
+                float: right;
+                width: auto;
+                text-align: right;
+            }
+            
+            .top-right-container{
+                float: right;
+                width: auto;
+                text-align: right;
+                /* edit the fourth value of the next line to change opacity */
+                /* 0.0 is clear, 1.0 is completely opaque                   */
+                background-color: rgba(0,0,0,0.5);
+                padding: 5px;
+                margin: 10px;
+                -moz-border-radius: 10px;
+                -webkit-border-radius:10px;
+                border-radius:10px;
+            }
+
+            .container{
+                width: 100wh;
+                height: 100vh;
+            }
+        </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>XION Bodycam Overlay</title>
+    </head>
+
+    <body>
+    	<audio id="beep" autoplay loop>
+    		<source src="double-beep.wav" type="audio/wav">
+        </audio>
+        
+        <div class="top-right-container">
+            <div class="top-right">
+                <img src="data:image/png;base64,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" width="64" height="64" border="0">
+            </div>
+            <div class="top-right">
+                LIVE&nbsp;<i class="fa fa-circle text-danger Blink"></i>&nbsp;&nbsp;METAWORLD CAM&trade;&nbsp;&nbsp;<br />
+                <span id="player">XXX</span>
+                <span id="callsign">[000]</span>&nbsp;&nbsp;<br />
+                <span id="agency">XXX</span>&nbsp;&nbsp;<br />                
+                <span style="padding:0px;margin:0px;" id="day">00</span>
+                <span style="padding:0px;margin:0px;" id="month">XXX</span>
+                <span style="padding:0px;margin:0px;" id="year">0000</span>&nbsp;
+                <span style="padding:0px;margin:0px;" id="hr">00</span>
+                <span style="padding:0px;margin:0px;">:</span>
+                <span style="padding:0px;margin:0px;" id="min">00</span>
+                <span style="padding:0px;margin:0px;">:</span>
+                <span style="padding:0px;margin:0px;" id="sec">00</span>
+                <span style="padding:0px;margin:0px;" id="tz">XX</span>&nbsp;&nbsp;
+            </div>
+        </div>
+    </body>
+    
+    <script>
+        //***edit this only for your information***
+        const player = "MARTIN FREEMAN";
+        const agency = "LOS SANTOS COUNTY SHERIFF";
+        const callsign = "[370]";
         //***        end edit this only         ***
     
         var d,h,m,s,animate;
@@ -98,46 +186,4 @@
         function init(){
             d=new Date();
             t=d.toLocaleString('en', {timeZoneName:'short'}).split(' ').pop();
-            clock();
-        };
-
-        function clock(){
-            d=new Date();
-            updateTime();
-            updateDate();
-            $('sec', s);
-            $('min', m);
-            $('hr', h);
-            $('tz', t);
-            $('day', day);
-            $('year', year);
-            $('month', monthNames[month]);
-            $('player', player);
-            $('agency', agency);
-            $('callsign', callsign);
-            animate=setTimeout(clock,100);
-        };
-        
-        function updateDate(){
-            day=d.getDate();
-            month=d.getMonth();
-            year=d.getFullYear();
-        };
-        
-        function updateTime(){
-            h=d.getHours();
-            m=d.getMinutes();
-            s=d.getSeconds();
-        };
-
-        function $(id,val){
-            if(val<10){
-                val='0'+val;
-            }
-            document.getElementById(id).innerHTML=val;
-        };
-
-        window.onload=init;
-    </script>
-
-</html>
+... (44 lines left)
